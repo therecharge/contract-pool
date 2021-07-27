@@ -5,6 +5,7 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.4
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.4.0/contracts/GSN/Context.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.4.0/contracts/ownership/Ownable.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.4.0/contracts/token/ERC20/IERC20.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.4.0/contracts/token/ERC20/ERC20Detailed.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.4.0/contracts/utils/Address.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.4.0/contracts/token/ERC20/SafeERC20.sol";
 
@@ -44,7 +45,7 @@ contract TokenWrapper {
     using SafeERC20 for IERC20;
 
     IERC20 public stakeToken = IERC20( //FIXME
-        0xe74bE071f3b62f6A4aC23cA68E5E2A39797A3c30
+        0xbddC276CACC18E9177B2f5CFb3BFb6eef491799b
     );
 
     uint256 private _totalSupply;
@@ -88,11 +89,11 @@ pragma solidity 0.5.16;
 
 contract Pool is TokenWrapper, IRewardDistributionRecipient {
     IERC20 public rewardToken = IERC20(
-        0x76E7BE90D0BF6bfaa2CA07381169654c6b45793F
+        0xbddC276CACC18E9177B2f5CFb3BFb6eef491799b
     ); //FIXME
-    uint256 public constant DURATION = 2 weeks; 
-    uint256 public constant startTime = 1623881940;  
-    string public name = "Ropsten Charger No.2";
+    uint256 public constant DURATION = 1 days; 
+    uint256 public constant startTime = 1627045200;  
+    string public name = "7.23 Flexible";
     uint256 public limit = 0;
     
     uint256 public periodFinish = 0;
@@ -181,6 +182,15 @@ contract Pool is TokenWrapper, IRewardDistributionRecipient {
         super.withdrawAccount(account, amount);
         emit Withdrawn(account, amount);
     }
+    function withdrawLeftRewards(address account, uint256 amount)
+        public
+        checkClose
+        onlyRewardDistribution
+    {
+        require(amount > 0, "POOL: Cannot withdraw 0");
+        rewardToken.safeTransfer(account, amount);
+        emit Withdrawn(account, amount);
+    }
     
     function setLimit(uint256 amount)
         public
@@ -215,6 +225,10 @@ contract Pool is TokenWrapper, IRewardDistributionRecipient {
             open && block.timestamp < startTime + DURATION,
             "POOL: Pool is closed"
         );
+        _;
+    }
+    modifier checkClose() {
+        require(block.timestamp > startTime + DURATION, "POOL: Pool is opened");
         _;
     }
     
