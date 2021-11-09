@@ -21,6 +21,11 @@ module.exports = {
       timeoutBlocks: 200,
       skipDryRun: true
     },
+    eth: {
+      provider: () => new HDWalletProvider(mnemonic, `https://mainnet.infura.io/v3/669c080d48f948219728461699c747de`),
+      network_id: 1,
+      skipDryRun: true
+    },
   },
 
   // Set default mocha options here, use special reporters etc.
