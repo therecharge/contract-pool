@@ -1,13 +1,13 @@
 pragma solidity 0.5.16;
 
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.4.0/contracts/math/Math.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.4.0/contracts/math/SafeMath.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.4.0/contracts/GSN/Context.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.4.0/contracts/ownership/Ownable.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.4.0/contracts/token/ERC20/IERC20.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.4.0/contracts/token/ERC20/ERC20Detailed.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.4.0/contracts/utils/Address.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.4.0/contracts/token/ERC20/SafeERC20.sol";
+import "openzeppelin-solidity/contracts/math/Math.sol";
+import "openzeppelin-solidity/contracts/math/SafeMath.sol";
+import "openzeppelin-solidity/contracts/GSN/Context.sol";
+import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
+import "openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
+import "openzeppelin-solidity/contracts/token/ERC20/ERC20Detailed.sol";
+import "openzeppelin-solidity/contracts/utils/Address.sol";
+import "openzeppelin-solidity/contracts/token/ERC20/SafeERC20.sol";
 
 /**
  * Reward Amount Interface
@@ -87,7 +87,7 @@ contract TokenWrapper {
  */
 pragma solidity 0.5.16;
 
-contract Pool is TokenWrapper, IRewardDistributionRecipient {
+contract PoolV1 is TokenWrapper, IRewardDistributionRecipient {
     IERC20 public rewardToken = IERC20(
         0xbddC276CACC18E9177B2f5CFb3BFb6eef491799b
     ); //FIXME

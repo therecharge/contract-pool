@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/therecharge/contract-pool#readme",
   "dependencies": {
+    "@truffle/hdwallet-provider": "^1.6.0",
     "openzeppelin-solidity": "^2.4.0"
   }
 }
