@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.7.3;
+pragma solidity 0.5.16;
 
 import "openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
 
@@ -9,7 +9,7 @@ contract LPlocker {
     address public owner;
     IERC20 public lpToken;
 
-    constructor(address _owner, address _lpToken) {
+    constructor(address _owner, address _lpToken) public {
         owner = _owner;
         lpToken = IERC20(_lpToken);
     }
