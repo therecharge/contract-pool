@@ -1,9 +1,8 @@
 const POOL = artifacts.require("PoolV2");
 const CHARGER_LIST = artifacts.require("ChargerList");
-const POOL_SPEC_LIST = require("../lib/211103/pool.json");
+const POOL_SPEC_LIST = require("../lib/211116/pool.json");
 
 module.exports = async function (deployer, network) {
-  return;
   const chargerList = await CHARGER_LIST.deployed()
   
   for(let i=0;i<POOL_SPEC_LIST.length;i++){
