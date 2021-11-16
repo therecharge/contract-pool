@@ -144,7 +144,6 @@ contract PoolV2 is TokenWrapper, IRewardDistributionRecipient {
     function lastTimeRewardApplicable() public view returns (uint256) {
         return Math.min(block.timestamp, periodFinish);
     }
-
     /**
      * Calculate the rewards for each token
      */
