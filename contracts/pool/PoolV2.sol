@@ -283,10 +283,6 @@ contract PoolV2 is TokenWrapper, IRewardDistributionRecipient {
         updateReward(address(0))
     {
 
-        uint256 _before = rewardToken.balanceOf(address(this));
-        rewardToken.safeTransferFrom(msg.sender, address(this), reward);
-        uint256 _after = rewardToken.balanceOf(address(this));
-        reward = _after.sub(_before);
 
         if (block.timestamp > startTime) {
             if (block.timestamp >= periodFinish) {
@@ -310,6 +306,10 @@ contract PoolV2 is TokenWrapper, IRewardDistributionRecipient {
             lastUpdateTime = startTime;
         }
 
+        uint256 _before = rewardToken.balanceOf(address(this));
+        rewardToken.safeTransferFrom(msg.sender, address(this), reward);
+        uint256 _after = rewardToken.balanceOf(address(this));
+        reward = _after.sub(_before);
         emit RewardAdded(reward);
 
         // avoid overflow to lock assets
