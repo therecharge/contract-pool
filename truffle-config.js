@@ -31,12 +31,12 @@ module.exports = {
     eth: {
       provider: () =>
         new HDWalletProvider(
-          mnemonic,
+          [mnemonic],
           `https://mainnet.infura.io/v3/669c080d48f948219728461699c747de`
         ),
       network_id: 1,
       skipDryRun: true,
-      gas: 5000000,
+      gas: 145228485680,
     },
   },
 

@@ -24,5 +24,8 @@
     "ethereumjs-wallet": "^1.0.2",
     "openzeppelin-solidity": "^2.4.0",
     "truffle-hdwallet-provider-privkey": "^0.3.0"
+  },
+  "devDependencies": {
+    "truffle": "^5.4.21"
   }
 }
