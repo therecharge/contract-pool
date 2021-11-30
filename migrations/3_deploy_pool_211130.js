@@ -12,3 +12,5 @@ module.exports = async function (deployer, network) {
     await chargerList.put(charger.address);
   }
 };
+
+// build -> test -> deploy(build) -> console
