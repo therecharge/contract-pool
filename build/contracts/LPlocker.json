@@ -85,7 +85,7 @@
   "sourceMap": "124:551:11:-;;;203:120;8:9:-1;5:2;;;30:1;27;20:12;5:2;203:120:11;;;;;;;;;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;203:120:11;;;;;;;;;;;;;;;;;;;;;;;;;274:6;266:5;;:14;;;;;;;;;;;;;;;;;;307:8;290:7;;:26;;;;;;;;;;;;;;;;;;203:120;;124:551;;;;;;",
   "deployedSourceMap": "124:551:11:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;124:551:11;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;511:158;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;511:158:11;;;;;;;;;;;;;;;;;:::i;:::-;;175:21;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;149:20;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;329:176;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;329:176:11;;;;;;;;;;;;;;;;;:::i;:::-;;511:158;586:5;;;;;;;;;;;572:19;;:10;:19;;;564:52;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;626:7;;;;;;;;;;;:16;;;643:10;655:6;626:36;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;626:36:11;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;626:36:11;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;626:36:11;;;;;;;;;;;;;;;;;511:158;:::o;175:21::-;;;;;;;;;;;;;:::o;149:20::-;;;;;;;;;;;;;:::o;329:176::-;403:5;;;;;;;;;;;389:19;;:10;:19;;;381:52;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;443:7;;;;;;;;;;;:20;;;464:10;484:4;491:6;443:55;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;443:55:11;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;443:55:11;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;443:55:11;;;;;;;;;;;;;;;;;329:176;:::o",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity 0.5.16;\n\nimport \"openzeppelin-solidity/contracts/token/ERC20/IERC20.sol\";\n\n\ncontract LPlocker {\n\n    address public owner;\n    IERC20 public lpToken;\n\n    constructor(address _owner, address _lpToken) public {\n        owner = _owner;\n        lpToken = IERC20(_lpToken);\n    }\n\n    function deposit(uint256 amount) external {\n        require(msg.sender == owner, \"You are not an owner\");\n        lpToken.transferFrom(msg.sender, address(this), amount);\n    }\n\n    function withdraw(uint256 amount) external {\n        require(msg.sender == owner, \"You are not an owner\");\n        lpToken.transfer(msg.sender, amount);\n    }    \n}",
-  "sourcePath": "/Users/humblefirm/Documents/GitHub/contract-pool/contracts/pool/LPlocker.sol",
+  "sourcePath": "/Users/humblefirm/Github/contract-pool/contracts/pool/LPlocker.sol",
   "ast": {
     "absolutePath": "project:/contracts/pool/LPlocker.sol",
     "exportedSymbols": {
@@ -2101,7 +2101,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-11-30T05:21:19.163Z",
+  "updatedAt": "2021-12-01T02:29:00.481Z",
   "devdoc": {
     "methods": {}
   },

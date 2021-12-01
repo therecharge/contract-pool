@@ -1,6 +1,8 @@
-const HDWalletProvider = require("truffle-hdwallet-provider-privkey");
+// const PrivateKeyProvider = require("truffle-privatekey-provider");
+const HDWalletProvider = require("@truffle/hdwallet-provider");
 const fs = require("fs");
-const mnemonic = fs.readFileSync(".secret").toString().trim();
+const privateKey = fs.readFileSync(".secret.main").toString().trim();
+// const privateKey = fs.readFileSync(".secret.ih").toString().trim();
 
 module.exports = {
   networks: {
@@ -11,31 +13,37 @@ module.exports = {
     },
     testnet: {
       provider: () =>
-      new HDWalletProvider([mnemonic],
+        new HDWalletProvider(
+          [privateKey],
           `https://data-seed-prebsc-1-s1.binance.org:8545`
         ),
       network_id: 97,
+      confirms: 1,
       timeoutBlocks: 200,
       skipDryRun: true,
     },
     bsc: {
       provider: () =>
-        new HDWalletProvider([mnemonic], `https://bsc-dataseed.binance.org`),
+        new HDWalletProvider(
+          [privateKey],
+          "https://bsc-dataseed4.binance.org" //`https://bsc-dataseed4.defibit.io/`
+        ),
       network_id: 56,
       timeoutBlocks: 200,
-      confrims: 1,
+      confirms: 1,
       skipDryRun: true,
-      gas: 500000,
+      gas: 4500000,
     },
     eth: {
       provider: () =>
         new HDWalletProvider(
-          [mnemonic],
+          [privateKey],
           `https://mainnet.infura.io/v3/669c080d48f948219728461699c747de`
         ),
       network_id: 1,
+      confirms: 1,
       skipDryRun: true,
-      gas: 145228485680,
+      gas: 5000000,
     },
   },
 
