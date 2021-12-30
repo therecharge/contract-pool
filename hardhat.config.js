@@ -1,5 +1,6 @@
 require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-ethers");
+require("@openzeppelin/hardhat-upgrades");
 const fs = require("fs");
 const privateKey = fs.readFileSync(".secret.main").toString().trim();
 
@@ -31,12 +32,21 @@ module.exports = {
       chainId: 97,
       gasPrice: 20000000000,
       accounts: [privateKey],
+      chargerList: "",
     },
     bsc: {
       url: "https://bsc-dataseed.binance.org/",
       chainId: 56,
       gasPrice: 20000000000,
       accounts: [privateKey],
+      chargerList: "",
+    },
+    eth: {
+      url: "https://mainnet.infura.io/v3/669c080d48f948219728461699c747de",
+      chainId: 1,
+      gasPrice: 70000000000,
+      accounts: [privateKey],
+      chargerList: "",
     },
   },
   solidity: {
