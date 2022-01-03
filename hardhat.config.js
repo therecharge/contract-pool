@@ -1,6 +1,7 @@
 require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-ethers");
 require("@openzeppelin/hardhat-upgrades");
+require("@nomiclabs/hardhat-etherscan");
 const fs = require("fs");
 const privateKey = fs.readFileSync(".secret.main").toString().trim();
 
@@ -65,5 +66,14 @@ module.exports = {
   },
   mocha: {
     timeout: 20000,
+  },
+  etherscan: {
+    // EXAMPLE
+    // npx hardhat verify --network bsc --constructor-args info/1.3/bsc.locked.100.js 0xA7ad096Ca2364EaE97F96e836f08dbb2b9b0b70B
+    // THEN LIST ON CONTRACT CHARGER LIST
+    // https://etherscan.io/address/0xb6ea0d1c92700b3dc95db19183de95df76994f37#writeContract
+    // https://bscscan.com/address/0xf88bf2a6af4255ee9862b1ac8891402f6d0952ec#writeContract
+    // apiKey: "Q8JWXRR74VDN9E3BF1857UTDX8HWSBRRYV", //BSCscan
+    apiKey: "YNMXP21Q3WF9RXAKPXM3EP6VDSAYJ8TQ6T", //ETHERscan
   },
 };
