@@ -5,7 +5,7 @@
 // Runtime Environment's members available in the global scope.
 const hre = require("hardhat");
 
-const INFO = require("../info/1.3/eth.lp.flexible.300.js");
+const INFO = require("../info/2.3/bsc.locked.0.2000.js");
 console.log("Pool Info: ", INFO);
 
 async function main() {
