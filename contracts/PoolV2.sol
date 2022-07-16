@@ -34,6 +34,11 @@ contract IRewardDistributionRecipient is Ownable {
   {
     rewardDistribution = _rewardDistribution;
   }
+
+  function getRewardDistribution() external view returns (address) 
+  {
+    return rewardDistribution;
+  }
 }
 
 // /**

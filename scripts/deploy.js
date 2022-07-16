@@ -4,9 +4,29 @@
 // When running the script with `npx hardhat run <script>` you'll find the Hardhat
 // Runtime Environment's members available in the global scope.
 const hre = require("hardhat");
+const readline = require("readline");
+const async = require("async");
 
-const INFO = require("../info/2.3/bsc.locked.0.2000.js");
-console.log("Pool Info: ", INFO);
+// const rl = readline.createInterface({
+//   input: process.stdin,
+//   output: process.stdout
+// });
+
+// rl.question('Write down pool name\n', function (name) {
+//   console.log("NAME", name);
+//   const INFO = require("../info/3.2/" + name + ".js"); //bsc.locked.0.500.js");
+//   console.log("Pool Info: ", INFO);
+//   rl.close();
+// });
+
+// rl.on('close', function () {
+//   console.log('\nBYE BYE !!!');
+//   process.exit(0);
+// });
+
+// return;
+
+const INFO = require("../info/4.7/bsc.locked.50000.js");
 
 async function main() {
   console.log("HARDHAT_NETWORK", process.env.HARDHAT_NETWORK);
@@ -22,8 +42,9 @@ async function main() {
   const poolV2 = await PoolV2.deploy(...INFO);
 
   const pool = await poolV2.deployed();
+  // 생성자는 Pool 계정 secret.main, 0x3c2465d88C6546eac6F9aa6f79081Ad874CA2E8b
   await pool.setRewardDistribution(
-    "0x82C02b9E84eeF14354698AD48dc99Caf5261C568"
+    "0x82C02b9E84eeF14354698AD48dc99Caf5261C568" // hub 계정
   );
 
   console.log("PoolV2 deployed to:", pool.address);

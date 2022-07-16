@@ -1,0 +1,10 @@
+module.exports = [
+    "3.2 BSC Locked - High Yield",
+    true,
+    false,
+    1646197200,
+    2505600,
+    "500000000000000000000",
+    "0x2D94172436D869c1e3c094BeaD272508faB0d9E3",
+    "0x2D94172436D869c1e3c094BeaD272508faB0d9E3",
+];
